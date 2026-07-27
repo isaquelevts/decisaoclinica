@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshop Decisão Clínica em Feridas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-50:#FFF6F8;
+    --pink-100:#FFE9EF;
+    --pink-200:#FFD6E2;
+    --pink-300:#FFB9CD;
+    --rose-600:#C7527A;
+    --rose-700:#A83E63;
+    --ink-900:#2E2129;
+    --ink-700:#5C4A52;
+    --sage-400:#8FAE94;
+    --sage-100:#EAF1EA;
+    --paper:#FFFCFD;
+    --line:rgba(46,33,41,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--pink-50);
+    color:var(--ink-900);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink-900);
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rose-700);
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .eyebrow::before{
+    content:'';
+    width:18px; height:1px;
+    background:var(--rose-600);
+    display:inline-block;
+  }
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--pink-300); color:var(--ink-900);}
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,246,248,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .nav-brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+  }
+  .nav-brand span{color:var(--rose-600);}
+  .nav-cta{
+    background:var(--ink-900);
+    color:var(--pink-50);
+    padding:10px 20px;
+    border-radius:100px;
+    font-size:0.85rem;
+    font-weight:600;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{background:var(--rose-600); transform:translateY(-1px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 64px;
+    position:relative;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(1.8rem, 2.9vw, 2.15rem);
+    line-height:1.16;
+    margin:18px 0 22px;
+    text-wrap:balance;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--rose-600);
+  }
+  .hero p.lede{
+    font-size:1.08rem;
+    color:var(--ink-700);
+    max-width:46ch;
+    margin-bottom:28px;
+  }
+  .badges{
+    display:flex; gap:18px; flex-wrap:wrap;
+    margin-bottom:32px;
+  }
+  .badges span{
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--ink-700);
+    display:flex; align-items:center; gap:7px;
+  }
+  .badges span::before{
+    content:'✓';
+    width:20px; height:20px;
+    border-radius:50%;
+    background:var(--sage-100);
+    color:var(--sage-400);
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.7rem;
+    flex-shrink:0;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--rose-600);
+    color:#fff;
+    padding:16px 30px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.98rem;
+    box-shadow:0 14px 30px -12px rgba(199,82,122,0.55);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    border:none;
+    cursor:pointer;
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    background:var(--rose-700);
+    box-shadow:0 18px 34px -12px rgba(168,62,99,0.6);
+  }
+  .btn-primary svg{transition:transform .2s ease;}
+  .btn-primary:hover svg{transform:translateX(3px);}
+
+  /* Hero photo placeholder */
+  .photo-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:16px;
+    box-shadow:0 30px 60px -30px rgba(199,82,122,0.35);
+  }
+  .photo-placeholder{
+    aspect-ratio:4/3.4;
+    border-radius:16px;
+    background:
+      repeating-linear-gradient(135deg, var(--pink-100), var(--pink-100) 10px, var(--pink-50) 10px, var(--pink-50) 20px);
+    border:1.5px dashed var(--pink-300);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    text-align:center;
+    padding:24px;
+  }
+  .photo-placeholder span{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    color:var(--rose-700);
+    line-height:1.5;
+  }
+  .photo-card .photo-cap{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    color:var(--ink-700);
+    text-align:center;
+    margin-top:14px;
+    letter-spacing:0.02em;
+  }
+
+  /* Specialist photo placeholder */
+  .spec-photo{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:16px;
+    background:
+      repeating-linear-gradient(135deg, var(--pink-100), var(--pink-100) 9px, var(--pink-50) 9px, var(--pink-50) 18px);
+    border:1.5px dashed var(--pink-300);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .spec-photo span{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    color:var(--rose-700);
+    text-align:center;
+    padding:0 20px;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:74px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 3vw, 2.3rem);
+    margin-top:14px;
+  }
+
+  /* ---------- PROBLEM ---------- */
+  .problem{
+    background:var(--ink-900);
+    color:var(--pink-50);
+    border-radius:32px;
+    margin:0 20px;
+  }
+  .problem .wrap{padding:0 8px; text-align:center;}
+  .problem .eyebrow{color:var(--pink-300); justify-content:center;}
+  .problem .eyebrow::before{background:var(--pink-300);}
+  .problem h2{color:var(--pink-50); max-width:46ch; margin:0 auto; text-wrap:balance;}
+  .problem h2 em{
+    font-style:italic;
+    color:var(--pink-300);
+  }
+  .problem .lede-big{
+    font-size:1.15rem;
+    color:var(--pink-200);
+    max-width:52ch;
+    margin:16px auto 44px;
+  }
+  .q-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:rgba(255,255,255,0.14);
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.14);
+  }
+  .q-card{
+    background:#3A2A33;
+    padding:28px 24px;
+    text-align:center;
+  }
+  .q-card .q-mark{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:2rem;
+    color:var(--rose-600);
+    line-height:1;
+    display:block;
+    margin-bottom:14px;
+  }
+  .q-card p{font-size:0.95rem; color:var(--pink-100);}
+  .problem .punch{
+    margin:40px auto 0;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:#fff;
+    max-width:38ch;
+  }
+  .problem .punch strong{color:var(--pink-300); font-style:normal;}
+
+  /* ---------- LEARN ---------- */
+  .learn-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+  }
+  .learn-item{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 24px;
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .learn-item:hover{border-color:var(--rose-600); transform:translateY(-2px);}
+  .learn-item .num{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    color:var(--rose-600);
+    background:var(--pink-100);
+    width:30px; height:30px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .learn-item p{font-weight:600; font-size:0.98rem;}
+
+  /* ---------- PROGRAM ---------- */
+  .program{background:var(--pink-100);}
+  .prog-card{
+    background:var(--paper);
+    border-radius:22px;
+    padding:36px 32px;
+    margin-bottom:20px;
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .prog-tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--rose-600);
+    background:var(--pink-100);
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:100px;
+    margin-bottom:16px;
+  }
+  .prog-card h3{font-size:1.45rem; margin-bottom:6px;}
+  .prog-card .instructor{
+    font-size:0.9rem;
+    color:var(--ink-700);
+    margin-bottom:20px;
+    font-weight:600;
+  }
+  .prog-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px 24px;
+  }
+  .prog-list li{
+    list-style:none;
+    font-size:0.92rem;
+    color:var(--ink-700);
+    padding-left:18px;
+    position:relative;
+  }
+  .prog-list li::before{
+    content:'';
+    position:absolute; left:0; top:8px;
+    width:6px; height:6px;
+    background:var(--rose-600);
+    border-radius:50%;
+  }
+
+  /* ---------- SPECIALISTS ---------- */
+  .spec-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:24px;
+  }
+  .spec-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:32px;
+  }
+  .spec-card h3{font-size:1.25rem; margin-bottom:4px;}
+  .spec-card .cred{
+    font-size:0.85rem;
+    color:var(--rose-600);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .spec-card p{font-size:0.92rem; color:var(--ink-700);}
+
+  /* ---------- RECEIVE ---------- */
+  .receive{background:var(--sage-100);}
+  .receive .wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .receive-list li{
+    list-style:none;
+    padding:14px 0;
+    border-bottom:1px solid rgba(46,33,41,0.1);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-weight:600;
+  }
+  .receive-list li:last-child{border-bottom:none;}
+  .receive-list li::before{
+    content:'✓';
+    width:26px; height:26px;
+    border-radius:50%;
+    background:var(--sage-400);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.75rem;
+    flex-shrink:0;
+  }
+
+  /* ---------- FOR WHOM ---------- */
+  .whom-list{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .whom-list li{
+    list-style:none;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns:60px 1fr;
+    align-items:center;
+    font-size:1.05rem;
+    font-weight:500;
+  }
+  .whom-list li:first-child{border-top:1px solid var(--line);}
+  .whom-list .tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    color:var(--rose-600);
+  }
+
+  /* ---------- OFFER / PRICE ---------- */
+  .offer{padding-top:0;}
+  .offer-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:28px;
+    padding:48px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+    box-shadow:0 40px 80px -40px rgba(199,82,122,0.4);
+  }
+  .offer-copy h2{
+    font-size:clamp(1.5rem, 2.6vw, 1.9rem);
+    margin:14px 0 24px;
+  }
+  .offer-list li{
+    list-style:none;
+    padding:10px 0;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--ink-700);
+  }
+  .offer-list li::before{
+    content:'✓';
+    width:22px; height:22px;
+    border-radius:50%;
+    background:var(--pink-100);
+    color:var(--rose-600);
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.68rem;
+    flex-shrink:0;
+  }
+  .offer-price-box{
+    background:var(--ink-900);
+    border-radius:22px;
+    padding:36px 32px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .offer-was{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    color:var(--pink-300);
+    letter-spacing:0.04em;
+    margin-bottom:18px;
+  }
+  .offer-price{
+    display:flex;
+    align-items:flex-start;
+    color:#fff;
+    font-family:'Fraunces', serif;
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .offer-price .currency{font-size:1.4rem; margin-top:8px; margin-right:4px; color:var(--pink-200);}
+  .offer-price .amount{font-size:4rem; font-weight:600;}
+  .offer-price .cents{font-size:1.4rem; margin-top:8px; color:var(--pink-200);}
+  .offer-note{
+    font-size:0.82rem;
+    color:var(--pink-200);
+    margin-bottom:26px;
+  }
+  .offer-btn{
+    width:100%;
+    justify-content:center;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final{
+    background:var(--ink-900);
+    color:var(--pink-50);
+    border-radius:32px;
+    margin:0 20px 20px;
+    text-align:center;
+    padding:88px 24px;
+  }
+  .final .eyebrow{color:var(--pink-300); justify-content:center;}
+  .final .eyebrow::before{background:var(--pink-300);}
+  .final h2{
+    color:#fff;
+    font-size:clamp(1.9rem, 4vw, 2.8rem);
+    max-width:20ch;
+    margin:18px auto 20px;
+  }
+  .final h2 em{color:var(--pink-300); font-style:italic;}
+  .final p{
+    color:var(--pink-200);
+    max-width:48ch;
+    margin:0 auto 36px;
+  }
+  .final-includes{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:22px;
+    margin-top:36px;
+    font-size:0.85rem;
+    color:var(--pink-200);
+  }
+  .final-includes span{display:flex; align-items:center; gap:7px;}
+  .final-includes span::before{content:'✓'; color:var(--pink-300);}
+
+  footer{
+    text-align:center;
+    padding:32px 24px 50px;
+    font-size:0.8rem;
+    color:var(--ink-700);
+  }
+
+  /* ---------- REVEAL ANIM ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:none;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .hero .wrap{grid-template-columns:1fr; gap:40px;}
+    .q-grid{grid-template-columns:1fr;}
+    .learn-grid{grid-template-columns:1fr;}
+    .spec-grid{grid-template-columns:1fr;}
+    .receive .wrap{grid-template-columns:1fr;}
+    .prog-list{grid-template-columns:1fr;}
+    .whom-list li{grid-template-columns:44px 1fr;}
+    .problem{margin:0 12px;}
+    .final{margin:0 12px 12px;}
+    .offer-card{grid-template-columns:1fr; padding:32px 24px;}
+  }
+  @media (max-width: 480px){
+    .wrap{padding:0 20px;}
+    .hero{padding:56px 0 40px;}
+    .hero h1{font-size:1.5rem;}
+    .problem h2 br{display:none;}
+    .badges{gap:12px 18px;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-brand">Decisão Clínica<span>.</span></div>
+    <a href="#inscricao" class="nav-cta">Garantir vaga</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Workshop ao vivo · Enfermagem em Feridas</span>
+      <h1>Descubra como especialistas decidem o melhor tratamento para diferentes tipos de feridas.</h1>
+      <p class="lede">Em um workshop prático e ao vivo, duas especialistas mostrarão como analisar cada caso, comparar alternativas e escolher a conduta mais adequada utilizando coberturas da indústria e terapias naturais.</p>
+      <div class="badges">
+        <span>Workshop ao vivo</span>
+        <span>Material de apoio</span>
+        <span>Certificado</span>
+      </div>
+      <a href="#inscricao" class="btn-primary">Quero garantir minha vaga
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.6h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z" stroke="#C7527A" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" stroke="#C7527A" stroke-width="1.4"/></svg>
+        <span>Foto das professoras<br>Dra. Patrícia Lemos &amp; Dra. Luz Marina</span>
+      </div>
+      <p class="cap photo-cap">Enfermeira Dra. Patrícia Lemos &amp; Enfermeira Dra. Luz Marina Alfonso Dutra</p>
+    </div>
+  </div>
+</header>
+
+<section class="problem reveal">
+  <div class="wrap">
+    <span class="eyebrow">O problema</span>
+    <h2>O mercado ensina quais produtos existem.<br>Quase ninguém ensina <em>como decidir</em>.</h2>
+    <p class="lede-big">Na prática, o enfermeiro precisa responder, à beira do leito, perguntas que nenhum catálogo de produto resolve sozinho.</p>
+
+    <div class="q-grid">
+      <div class="q-card">
+        <span class="q-mark">?</span>
+        <p>Quando uma cobertura industrial é realmente a melhor escolha?</p>
+      </div>
+      <div class="q-card">
+        <span class="q-mark">?</span>
+        <p>Em quais situações uma terapia natural pode ser indicada?</p>
+      </div>
+      <div class="q-card">
+        <span class="q-mark">?</span>
+        <p>Como adaptar o tratamento a limitações financeiras — e justificar isso tecnicamente?</p>
+      </div>
+    </div>
+
+    <p class="punch">Conhecer produtos é importante. <strong>Saber decidir</strong> é o que diferencia um profissional comum de um profissional de referência.</p>
+  </div>
+</section>
+
+<section class="learn reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">O que você vai aprender</span>
+      <h2>Um raciocínio clínico para decisões mais seguras e individualizadas</h2>
+    </div>
+    <div class="learn-grid">
+      <div class="learn-item"><span class="num">01</span><p>Escolher tratamentos com mais segurança</p></div>
+      <div class="learn-item"><span class="num">02</span><p>Definir quando utilizar coberturas industriais</p></div>
+      <div class="learn-item"><span class="num">03</span><p>Identificar quando terapias naturais fazem sentido</p></div>
+      <div class="learn-item"><span class="num">04</span><p>Adaptar a conduta à realidade financeira do paciente</p></div>
+      <div class="learn-item"><span class="num">05</span><p>Justificar decisões com base em evidências científicas</p></div>
+      <div class="learn-item"><span class="num">06</span><p>Atender com mais autonomia e confiança</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="program reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Programação</span>
+      <h2>Dois encontros, duas especialistas</h2>
+    </div>
+
+    <div class="prog-card">
+      <span class="prog-tag">Aula 1</span>
+      <h3>Produtos da indústria: como decidir a melhor cobertura para cada paciente</h3>
+      <p class="instructor">Enfermeira Dra. Patrícia Lemos</p>
+      <ul class="prog-list">
+        <li>Como escolher coberturas de forma estratégica</li>
+        <li>Mecanismos de ação dos principais produtos</li>
+        <li>Plano A, Plano B e Plano C conforme o orçamento</li>
+        <li>Manipulados como alternativa terapêutica</li>
+        <li>Casos clínicos comentados</li>
+      </ul>
+    </div>
+
+    <div class="prog-card">
+      <span class="prog-tag">Aula 2</span>
+      <h3>Fitoterápicos no tratamento de feridas: quando utilizar e por quê</h3>
+      <p class="instructor">Enfermeira Dra. Luz Marina Alfonso Dutra</p>
+      <ul class="prog-list">
+        <li>Aplicações clínicas dos fitoterápicos</li>
+        <li>Evidências científicas</li>
+        <li>Critérios para indicação</li>
+        <li>Casos clínicos reais</li>
+        <li>Como integrar terapias naturais com segurança</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="specialists reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Conheça as especialistas</span>
+      <h2>Duas décadas de prática à beira do leito</h2>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <div class="spec-photo">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.6h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z" stroke="#C7527A" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" stroke="#C7527A" stroke-width="1.4"/></svg>
+          <span>Foto Dra. Patrícia Lemos</span>
+        </div>
+        <h3>Dra. Patrícia Lemos</h3>
+        <p class="cred">Estomaterapia · Enfermagem Dermatológica · 18 anos</p>
+        <p>Mestre em Enfermagem, já atendeu mais de 10 mil pacientes e coordenou grupos especializados em hospitais. Atua em consultório, hospitais e atendimento domiciliar, coordena uma pós-graduação em Enfermagem Dermatológica e ministra cursos de Laserterapia.</p>
+      </div>
+      <div class="spec-card">
+        <div class="spec-photo">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 8a2 2 0 0 1 2-2h1.2a1 1 0 0 0 .83-.45l.94-1.4A1 1 0 0 1 9.8 3.6h4.4a1 1 0 0 1 .83.45l.94 1.4a1 1 0 0 0 .83.45H18a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z" stroke="#C7527A" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.4" stroke="#C7527A" stroke-width="1.4"/></svg>
+          <span>Foto Dra. Luz Marina Alfonso Dutra</span>
+        </div>
+        <h3>Dra. Luz Marina Alfonso Dutra</h3>
+        <p class="cred">Enfermagem Dermatológica · 20 anos</p>
+        <p>Mestre e doutora pela Universidade de Brasília. Atua no ambulatório de Diabetes, Obesidade e Hipertensão do SUS em Brasília, é docente do Mestrado Profissional da ESP-DF, tutora de Residência Multiprofissional e tem formação em Antroposofia pela Fiocruz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="receive reveal">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">O que você recebe</span>
+      <h2>Tudo que fica com você depois do último minuto ao vivo</h2>
+    </div>
+    <ul class="receive-list">
+      <li>Dois encontros ao vivo</li>
+      <li>Material de apoio</li>
+      <li>Certificado de participação</li>
+      <li>Acesso à gravação por tempo determinado</li>
+    </ul>
+  </div>
+</section>
+
+<section class="whom reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Para quem é este workshop</span>
+      <h2>Feito para quem decide o tratamento, não só quem o aplica</h2>
+    </div>
+    <ul class="whom-list">
+      <li><span class="tag">→</span> Trabalham com tratamento de feridas</li>
+      <li><span class="tag">→</span> Desejam atuar na área</li>
+      <li><span class="tag">→</span> Atendem pacientes em hospitais, clínicas ou domicílio</li>
+      <li><span class="tag">→</span> Pretendem abrir um consultório especializado</li>
+      <li><span class="tag">→</span> Buscam mais segurança para tomar decisões clínicas</li>
+      <li><span class="tag">→</span> Querem atualizar a prática com base em evidências científicas</li>
+    </ul>
+  </div>
+</section>
+
+<section class="offer reveal">
+  <div class="wrap">
+    <div class="offer-card">
+      <div class="offer-copy">
+        <span class="eyebrow">Investimento</span>
+        <h2>Todo o raciocínio clínico das duas aulas, por um valor acessível</h2>
+        <ul class="offer-list">
+          <li>Dois encontros ao vivo</li>
+          <li>Material de apoio</li>
+          <li>Certificado de participação</li>
+          <li>Acesso à gravação por tempo determinado</li>
+        </ul>
+      </div>
+      <div class="offer-price-box">
+        <span class="offer-was">Vagas com condição especial de lançamento</span>
+        <div class="offer-price">
+          <span class="currency">R$</span>
+          <span class="amount">67</span>
+          <span class="cents">,00</span>
+        </div>
+        <span class="offer-note">pagamento único · acesso imediato</span>
+        <a href="#" class="btn-primary offer-btn">Quero garantir minha vaga
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="inscricao" class="final reveal">
+  <span class="eyebrow">Garanta sua vaga</span>
+  <h2>A diferença entre <em>conhecer</em> tratamentos e <em>saber decidir</em> qual usar</h2>
+  <p>Participe do Workshop Decisão Clínica em Feridas e desenvolva um raciocínio clínico mais seguro, individualizado e baseado em evidências.</p>
+  <a href="#" class="btn-primary">Quero garantir minha vaga agora
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div class="final-includes">
+    <span>Workshop ao vivo</span>
+    <span>Material de apoio</span>
+    <span>Certificado</span>
+    <span>Gravação por tempo determinado</span>
+  </div>
+</section>
+
+<footer>
+  Workshop Decisão Clínica em Feridas — Dra. Patrícia Lemos &amp; Dra. Luz Marina Alfonso Dutra
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
