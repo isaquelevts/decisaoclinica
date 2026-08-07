@@ -6,9 +6,10 @@ Site estático do Workshop Decisão Clínica em Feridas — Enf.ª Dra. Patríci
 
 | Rota | Arquivo | Conteúdo |
 |---|---|---|
-| `/` | `index.html` | Índice com os links das duas páginas |
+| `/` | `index.html` | Índice com os links das páginas |
 | `/workshop` | `workshop/index.html` | Landing page de inscrição do workshop |
-| `/oferta` | `oferta/index.html` | Documento de planejamento da oferta (promessa, mecanismo, funil, criativos) |
+| `/oferta` | `oferta/index.html` | Documento de planejamento da oferta (promessa, mecanismo, funil) |
+| `/criativos` | `criativos/index.html` | Os 9 roteiros de vídeo, para as especialistas gravarem |
 
 ## Deploy
 
@@ -27,8 +28,10 @@ npx serve .
 ├── index.html          # índice
 ├── workshop/
 │   └── index.html      # landing page
-└── oferta/
-    └── index.html      # planejamento da oferta
+├── oferta/
+│   └── index.html      # planejamento da oferta
+└── criativos/
+    └── index.html      # roteiros de vídeo
 ```
 
 Cada página é um arquivo HTML único, com CSS embutido e fontes do Google Fonts (Fraunces, Public Sans, Space Mono). Não há dependências nem etapa de build.

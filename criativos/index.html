@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Criativos — Workshop de Tratamento de Feridas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Public+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink-50:#FFF6F8;
+    --pink-100:#FFE9EF;
+    --pink-200:#FFD6E2;
+    --pink-300:#FFB9CD;
+    --rose-600:#C7527A;
+    --rose-700:#A83E63;
+    --ink-900:#2E2129;
+    --ink-800:#3A2A33;
+    --ink-700:#5C4A52;
+    --paper:#FFFCFD;
+    --line:rgba(46,33,41,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--pink-50);
+    color:var(--ink-900);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink-900);
+    text-wrap:balance;
+  }
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{max-width:800px; margin:0 auto; padding:0 24px;}
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rose-700);
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .eyebrow::before{content:''; width:18px; height:1px; background:var(--rose-600); display:inline-block; flex-shrink:0;}
+
+  header.cover{padding:56px 0 40px;}
+  header.cover .back{
+    display:inline-block;
+    margin-bottom:20px;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    color:var(--ink-700);
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+  }
+  header.cover h1{
+    font-size:clamp(1.9rem, 5vw, 2.6rem);
+    line-height:1.1;
+    margin:16px 0 14px;
+  }
+  header.cover .sub{font-size:1.02rem; color:var(--ink-700); max-width:56ch;}
+
+  .filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:24px;
+  }
+  .filter{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+    color:var(--rose-700);
+    background:var(--pink-100);
+    border:1px solid var(--pink-200);
+    border-radius:100px;
+    padding:6px 14px;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+  }
+  .filter:hover, .filter.active{background:var(--rose-600); color:#fff; border-color:var(--rose-600);}
+
+  .creative-legend{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:12px;
+    margin:32px 0 40px;
+  }
+  .creative-legend div{
+    background:var(--pink-100);
+    border:1px solid var(--pink-200);
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .creative-legend b{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--rose-700);
+    margin-bottom:6px;
+  }
+  .creative-legend p{font-size:0.88rem; color:var(--ink-700);}
+
+  main{padding-bottom:80px;}
+
+  .creative{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:30px 32px;
+    scroll-margin-top:24px;
+  }
+  .creative + .creative{margin-top:16px;}
+  .creative-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+    padding-bottom:16px;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .creative-head .titles{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
+  .c-num{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    color:var(--rose-600);
+  }
+  .creative-head h3{font-size:1.15rem;}
+  .who-tag{
+    font-size:0.78rem;
+    font-weight:700;
+    color:var(--rose-700);
+    background:var(--pink-100);
+    border-radius:100px;
+    padding:6px 14px;
+    white-space:nowrap;
+  }
+  .who-tag[data-who="luz-marina"]{background:var(--sage-100,#EAF1EA); color:#4C6E51;}
+  .block-label{
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-700);
+    opacity:0.8;
+    margin-bottom:10px;
+  }
+  .hook{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.08rem;
+    line-height:1.36;
+    color:var(--ink-900);
+    background:var(--pink-100);
+    border-left:3px solid var(--rose-600);
+    border-radius:0 14px 14px 0;
+    padding:18px 22px;
+    margin-bottom:22px;
+  }
+  .script p{
+    font-size:0.97rem;
+    color:var(--ink-700);
+    padding:3px 0;
+  }
+  .script p strong{color:var(--ink-900);}
+  .cta-block{
+    margin-top:22px;
+    background:var(--ink-900);
+    border-radius:16px;
+    padding:18px 22px;
+  }
+  .cta-block .block-label{color:var(--pink-300); opacity:1; margin-bottom:6px;}
+  .cta-block p{font-size:0.95rem; color:var(--pink-100);}
+  .cta-block p + p{margin-top:6px;}
+  .cta-block strong{color:#fff;}
+
+  .copy-btn{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.04em;
+    color:var(--rose-700);
+    background:none;
+    border:1px solid var(--pink-200);
+    border-radius:100px;
+    padding:6px 14px;
+    cursor:pointer;
+    transition:background .15s ease, color .15s ease;
+  }
+  .copy-btn:hover{background:var(--rose-600); color:#fff; border-color:var(--rose-600);}
+  .copy-btn.copied{background:var(--sage-400,#8FAE94); color:#fff; border-color:transparent;}
+
+  footer{
+    padding:32px 0 60px;
+    text-align:center;
+    font-size:0.8rem;
+    color:var(--ink-700);
+    opacity:0.75;
+  }
+
+  @media (max-width:640px){
+    .creative-legend{grid-template-columns:1fr;}
+    .creative{padding:24px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="cover">
+    <a class="back" href="/oferta">← Planejamento da oferta</a>
+    <span class="eyebrow">Workshop de Tratamento de Feridas</span>
+    <h1>Roteiros de criativos</h1>
+    <p class="sub">9 roteiros prontos para gravar em vídeo curto. Siga a estrutura Hook → Desenvolvimento → CTA, com pausa entre cada frase.</p>
+
+    <div class="filters">
+      <span class="filter active" data-filter="all">Todos</span>
+      <span class="filter" data-filter="qualquer">Qualquer especialista</span>
+      <span class="filter" data-filter="luz-marina">Dra. Luz Marina · Fitoterápicos</span>
+    </div>
+
+    <div class="creative-legend">
+      <div>
+        <b>1. Hook</b>
+        <p>A primeira frase. É o que segura a pessoa nos 3 primeiros segundos — deve ser dita direto, sem apresentação prévia.</p>
+      </div>
+      <div>
+        <b>2. Desenvolvimento</b>
+        <p>O corpo do vídeo, em frases curtas. Cada linha do roteiro é uma frase com pausa — o ritmo faz parte da mensagem.</p>
+      </div>
+      <div>
+        <b>3. CTA</b>
+        <p>O convite final. Sempre nomeia o workshop e direciona para o botão de inscrição.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 01 -->
+    <div class="creative" data-who="qualquer">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 01</span>
+          <h3>Você realmente domina as coberturas?</h3>
+        </div>
+        <span class="who-tag">Qualquer especialista</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"Você realmente domina as coberturas para tratamento de feridas? Ou só conhece o nome de várias delas?"</p>
+      <p class="block-label">Desenvolvimento</p>
+      <div class="script">
+        <p>Espuma.</p>
+        <p>Hidrogel.</p>
+        <p>Alginato.</p>
+        <p>Hidrofibra.</p>
+        <p>Carvão com prata.</p>
+        <p>Você provavelmente já estudou todas elas.</p>
+        <p>Mas deixa eu te fazer uma pergunta.</p>
+        <p>Quando dois pacientes apresentam feridas parecidas...</p>
+        <p>Você sabe exatamente qual cobertura utilizar?</p>
+        <p>Ou acaba ficando em dúvida?</p>
+        <p>Esse é o problema.</p>
+        <p>O mercado ensina dezenas de coberturas.</p>
+        <p>Mas quase ninguém ensina quando utilizar cada uma delas.</p>
+        <p>Foi exatamente por isso que criamos este workshop.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>Em duas aulas ao vivo, você aprenderá quando utilizar as principais coberturas industriais e os principais fitoterápicos para tratar seus pacientes com muito mais segurança.</p>
+        <p>Clique no botão e garanta sua vaga.</p>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="creative" data-who="qualquer">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 02</span>
+          <h3>O momento da verdade</h3>
+        </div>
+        <span class="who-tag">Qualquer especialista</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"Existe um momento em que todo enfermeiro descobre se realmente domina o tratamento de feridas."</p>
+      <p class="block-label">Desenvolvimento</p>
+      <div class="script">
+        <p>Não é durante uma prova.</p>
+        <p>Não é assistindo uma aula.</p>
+        <p>É quando o paciente está na sua frente.</p>
+        <p>E você precisa decidir.</p>
+        <p>Qual cobertura utilizar?</p>
+        <p>Qual fitoterápico indicar?</p>
+        <p>É nesse momento que muitos profissionais percebem que conhecem vários produtos...</p>
+        <p>Mas não sabem exatamente quando utilizar cada um deles.</p>
+        <p>É essa insegurança que queremos resolver.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>Participe do <strong>Workshop de Tratamento de Feridas</strong> e aprenda, com duas especialistas, quando utilizar as principais coberturas industriais e os principais fitoterápicos.</p>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="creative" data-who="qualquer">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 03</span>
+          <h3>O mercado ensina errado</h3>
+        </div>
+        <span class="who-tag">Qualquer especialista</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"O mercado está ensinando enfermeiros da forma errada."</p>
+      <p class="block-label">Desenvolvimento</p>
+      <div class="script">
+        <p>Ele mostra dezenas de coberturas.</p>
+        <p>Explica como cada uma funciona.</p>
+        <p>Apresenta novas tecnologias.</p>
+        <p>Mas esquece da pergunta mais importante.</p>
+        <p>Quando utilizar cada uma delas?</p>
+        <p>Porque decorar nomes não resolve o problema.</p>
+        <p>O que resolve é saber qual cobertura escolher quando o paciente está na sua frente.</p>
+        <p>É isso que você aprenderá no workshop.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>Domine as coberturas para tratamento de feridas e pare de ter dúvidas sobre qual utilizar em cada paciente.</p>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="creative" data-who="qualquer">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 04</span>
+          <h3>A pergunta</h3>
+        </div>
+        <span class="who-tag">Qualquer especialista</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"Posso te fazer uma pergunta?"</p>
+      <p class="block-label">Desenvolvimento</p>
+      <div class="script">
+        <p>Se eu colocasse cinco coberturas diferentes na sua frente...</p>
+        <p>Você saberia dizer exatamente quando utilizar cada uma delas?</p>
+        <p>Sem consultar protocolo.</p>
+        <p>Sem perguntar para outro profissional.</p>
+        <p>Sem ficar em dúvida.</p>
+        <p>Se a resposta for "não"...</p>
+        <p>Saiba que você não está sozinho.</p>
+        <p>Essa é uma das maiores dificuldades de quem trabalha com tratamento de feridas.</p>
+        <p>E foi justamente para resolver isso que criamos este workshop.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>Aprenda, com duas especialistas, quando utilizar as principais coberturas industriais e os principais fitoterápicos no tratamento de feridas.</p>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="creative" data-who="qualquer">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 05</span>
+          <h3>Nunca mais chute</h3>
+        </div>
+        <span class="who-tag">Qualquer especialista</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"Nunca mais 'chute' qual cobertura utilizar."</p>
+      <p class="block-label">Desenvolvimento</p>
+      <div class="script">
+        <p>Você estudou.</p>
+        <p>Fez cursos.</p>
+        <p>Conhece vários produtos.</p>
+        <p>Mas, na prática...</p>
+        <p>Ainda aparecem situações em que você pensa:</p>
+        <p>"Qual cobertura faz mais sentido aqui?"</p>
+        <p>Esse workshop foi criado para acabar com essa dúvida.</p>
+        <p>Em apenas duas aulas ao vivo, você aprenderá quando utilizar as principais coberturas industriais e os principais fitoterápicos utilizados no tratamento de feridas.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>Clique no botão e garanta sua vaga.</p>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="creative" data-who="luz-marina">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 06</span>
+          <h3>A maior dúvida não é se funciona</h3>
+        </div>
+        <span class="who-tag" data-who="luz-marina">Enf.ª Dra. Luz Marina Alfonso Dutra</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"Depois de 20 anos trabalhando com fitoterápicos no tratamento de feridas, percebi que a maior dúvida não é se eles funcionam."</p>
+      <p class="block-label">Desenvolvimento</p>
+      <div class="script">
+        <p>A maioria dos enfermeiros já sabe que fitoterápicos funcionam.</p>
+        <p>A dúvida é outra.</p>
+        <p>Qual fitoterápico utilizar em cada ferida?</p>
+        <p>Quando ele é realmente a melhor escolha?</p>
+        <p>E como justificar essa decisão com respaldo científico?</p>
+        <p>Foi por isso que separei uma aula inteira só para isso.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>No <strong>Workshop de Tratamento de Feridas</strong>, vou te ensinar exatamente quando utilizar os principais fitoterápicos na prática clínica.</p>
+        <p>Clique no botão e garanta sua vaga.</p>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="creative" data-who="luz-marina">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 07</span>
+          <h3>Um caso real (template — preencha com um caso próprio)</h3>
+        </div>
+        <span class="who-tag" data-who="luz-marina">Enf.ª Dra. Luz Marina Alfonso Dutra</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"Vou contar um caso real de um paciente que atendi."</p>
+      <p class="block-label">Desenvolvimento — preencha os colchetes com a história real</p>
+      <div class="script">
+        <p>[Nome ou perfil do paciente] chegou até mim com [tipo de ferida / lesão e há quanto tempo ela existia].</p>
+        <p>[O que já tinha sido tentado antes, se houver — ex: outro curativo, outra conduta que não funcionou].</p>
+        <p>Avaliando o caso, percebi que [motivo clínico que levou à escolha do fitoterápico].</p>
+        <p>Optei por tratar com [nome do fitoterápico ou manipulado utilizado].</p>
+        <p>[Como foi aplicado / frequência de troca / cuidados específicos].</p>
+        <p>Em [tempo — dias/semanas], [o que mudou na ferida: sinais de melhora observados].</p>
+        <p>Hoje, [resultado final: cicatrizou / evoluiu bem / segue em acompanhamento].</p>
+        <p>Esse é um exemplo real de como saber qual fitoterápico utilizar, e quando utilizá-lo, muda o resultado do tratamento.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>Na minha aula do <strong>Workshop de Tratamento de Feridas</strong>, vou trazer casos como este e te ensinar quando indicar os principais fitoterápicos com segurança.</p>
+        <p>Clique no botão e garanta sua vaga.</p>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="creative" data-who="luz-marina">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 08</span>
+          <h3>O caso que mudou minha forma de ver os fitoterápicos</h3>
+        </div>
+        <span class="who-tag" data-who="luz-marina">Enf.ª Dra. Luz Marina Alfonso Dutra</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"Vou contar um caso que mudou a forma como eu vejo os fitoterápicos."</p>
+      <p class="block-label">Desenvolvimento</p>
+      <div class="script">
+        <p>Uma paciente chegou até mim com uma ferida que não respondia ao tratamento convencional.</p>
+        <p>As opções industriais disponíveis não estavam funcionando como deveriam.</p>
+        <p>Foi então que avaliei um fitoterápico com respaldo científico para aquele quadro.</p>
+        <p>A evolução foi visível em poucas semanas.</p>
+        <p>Não foi sorte.</p>
+        <p>Foi saber, com critério, qual fitoterápico utilizar naquele caso.</p>
+        <p>É esse raciocínio que vou compartilhar na minha aula do workshop.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>Clique no botão e garanta sua vaga no <strong>Workshop de Tratamento de Feridas</strong>.</p>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="creative" data-who="luz-marina">
+      <div class="creative-head">
+        <div class="titles">
+          <span class="c-num">Criativo 09</span>
+          <h3>Convite pessoal</h3>
+        </div>
+        <span class="who-tag" data-who="luz-marina">Enf.ª Dra. Luz Marina Alfonso Dutra</span>
+      </div>
+      <p class="block-label">Hook</p>
+      <p class="hook">"Eu quero te ensinar algo que aprendi em duas décadas tratando feridas com fitoterápicos."</p>
+      <p class="block-label">Desenvolvimento</p>
+      <div class="script">
+        <p>Não é uma lista de produtos.</p>
+        <p>Não é um protocolo engessado.</p>
+        <p>É o critério que uso, todos os dias, para decidir qual fitoterápico faz sentido em cada ferida.</p>
+        <p>Com respaldo científico.</p>
+        <p>Com segurança.</p>
+        <p>E com casos clínicos reais, que você vai reconhecer da sua própria prática.</p>
+      </div>
+      <div class="cta-block">
+        <p class="block-label">CTA</p>
+        <p>Será um prazer ter você na minha aula.</p>
+        <p>Clique no botão e garanta sua vaga no <strong>Workshop de Tratamento de Feridas</strong>.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>Workshop de Tratamento de Feridas — Dra. Patrícia Lemos &amp; Dra. Luz Marina Alfonso Dutra</footer>
+</div>
+
+<script>
+  const filters = document.querySelectorAll('.filter');
+  const cards = document.querySelectorAll('.creative');
+  filters.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      filters.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c=>{
+        c.style.display = (f==='all' || c.dataset.who===f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
