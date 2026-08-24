@@ -66,48 +66,10 @@
     *{animation:none !important; transition:none !important;}
   }
 
-  /* ---------- NAV ---------- */
-  .nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(255,246,248,0.85);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    padding-top:16px; padding-bottom:16px;
-  }
-  .nav-scarcity{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:0.85rem;
-    font-weight:700;
-    color:var(--rose-700);
-  }
-  .nav-scarcity .dot{
-    width:7px; height:7px;
-    border-radius:50%;
-    background:var(--rose-600);
-    flex-shrink:0;
-    animation:pulse 1.6s ease-in-out infinite;
-  }
-  .nav-scarcity b{color:var(--ink-900); font-weight:700;}
   @keyframes pulse{
     0%,100%{opacity:1;}
     50%{opacity:0.35;}
   }
-  .nav-cta{
-    background:var(--ink-900);
-    color:var(--pink-50);
-    padding:10px 20px;
-    border-radius:100px;
-    font-size:0.85rem;
-    font-weight:600;
-    transition:transform .2s ease, background .2s ease;
-    white-space:nowrap;
-  }
-  .nav-cta:hover{background:var(--rose-600); transform:translateY(-1px);}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -189,6 +151,7 @@
     transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
     border:none;
     cursor:pointer;
+    animation:btn-pulse 2s ease-in-out infinite;
   }
   .btn-primary:hover{
     transform:translateY(-2px);
@@ -197,6 +160,11 @@
   }
   .btn-primary svg{transition:transform .2s ease;}
   .btn-primary:hover svg{transform:translateX(3px);}
+  @keyframes btn-pulse{
+    0%{box-shadow:0 14px 30px -12px rgba(199,82,122,0.55), 0 0 0 0 rgba(199,82,122,0.55);}
+    70%{box-shadow:0 14px 30px -12px rgba(199,82,122,0.55), 0 0 0 14px rgba(199,82,122,0);}
+    100%{box-shadow:0 14px 30px -12px rgba(199,82,122,0.55), 0 0 0 0 rgba(199,82,122,0);}
+  }
 
   /* Hero photo placeholder */
   .photo-card{
@@ -635,24 +603,14 @@
     .problem h2 br{display:none;}
     .badges{gap:12px 18px;}
     section{padding:56px 0;}
-    .nav .wrap{flex-wrap:wrap; gap:10px; padding-top:12px; padding-bottom:12px;}
-    .nav-scarcity{font-size:0.75rem;}
   }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="wrap">
-    <span class="nav-scarcity"><span class="dot"></span>Apenas <b>10 vagas</b> por <b>R$ 19,90</b></span>
-    <a href="#inscricao" class="nav-cta">Garantir vaga</a>
-  </div>
-</nav>
-
 <header class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow">Workshop ao vivo · Enfermagem em Feridas</span>
       <div class="scarcity-badge"><span class="dot"></span>Primeiro lote: apenas 10 vagas por R$ 19,90</div>
       <h1>Domine as coberturas para tratamento de feridas e pare de ter dúvidas sobre qual utilizar em cada paciente.</h1>
       <p class="lede">Aprenda, com duas especialistas, quando utilizar as principais coberturas industriais e os principais fitoterápicos no tratamento de feridas. Em duas aulas ao vivo você aprenderá, na prática, quando indicar cada opção para conduzir seus pacientes com muito mais segurança.</p>
