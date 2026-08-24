@@ -111,19 +111,21 @@
   .scarcity-badge{
     display:inline-flex;
     align-items:center;
-    gap:8px;
-    background:var(--rose-600);
-    color:#fff;
-    font-size:0.82rem;
+    gap:6px;
+    background:var(--pink-100);
+    border:1px solid var(--pink-200);
+    color:var(--rose-700);
+    font-size:0.72rem;
     font-weight:700;
-    padding:9px 18px;
+    letter-spacing:0.01em;
+    padding:6px 12px;
     border-radius:100px;
-    margin-bottom:18px;
+    margin-bottom:16px;
   }
   .scarcity-badge .dot{
-    width:7px; height:7px;
+    width:6px; height:6px;
     border-radius:50%;
-    background:#fff;
+    background:var(--rose-600);
     flex-shrink:0;
     animation:pulse 1.6s ease-in-out infinite;
   }
@@ -603,6 +605,7 @@
     .problem h2 br{display:none;}
     .badges{gap:12px 18px;}
     section{padding:56px 0;}
+    .scarcity-badge{font-size:0.66rem; padding:5px 10px;}
   }
 </style>
 </head>
