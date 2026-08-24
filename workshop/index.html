@@ -260,6 +260,24 @@
     max-width:52ch;
     margin:16px auto 44px;
   }
+  .cover-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    max-width:640px;
+    margin:0 auto 44px;
+    list-style:none;
+  }
+  .cover-list li{
+    font-size:0.9rem;
+    font-weight:600;
+    color:var(--pink-100);
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:100px;
+    padding:8px 18px;
+  }
   .q-grid{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
@@ -644,7 +662,7 @@
     <h2>O mercado ensina dezenas de coberturas.<br>O problema é que quase ninguém ensina <em>quando utilizar cada uma delas</em>.</h2>
     <p class="lede-big">Você aprende sobre:</p>
 
-    <ul class="prog-list">
+    <ul class="cover-list">
       <li>Espumas</li>
       <li>Alginatos</li>
       <li>Hidrogéis</li>
