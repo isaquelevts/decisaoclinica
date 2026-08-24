@@ -77,12 +77,26 @@
     display:flex; align-items:center; justify-content:space-between;
     padding-top:16px; padding-bottom:16px;
   }
-  .nav-brand{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.05rem;
+  .nav-scarcity{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.85rem;
+    font-weight:700;
+    color:var(--rose-700);
   }
-  .nav-brand span{color:var(--rose-600);}
+  .nav-scarcity .dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--rose-600);
+    flex-shrink:0;
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  .nav-scarcity b{color:var(--ink-900); font-weight:700;}
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.35;}
+  }
   .nav-cta{
     background:var(--ink-900);
     color:var(--pink-50);
@@ -91,6 +105,7 @@
     font-size:0.85rem;
     font-weight:600;
     transition:transform .2s ease, background .2s ease;
+    white-space:nowrap;
   }
   .nav-cta:hover{background:var(--rose-600); transform:translateY(-1px);}
 
@@ -130,6 +145,25 @@
     font-weight:600;
     color:var(--ink-700);
     display:flex; align-items:center; gap:7px;
+  }
+  .scarcity-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--rose-600);
+    color:#fff;
+    font-size:0.82rem;
+    font-weight:700;
+    padding:9px 18px;
+    border-radius:100px;
+    margin-bottom:18px;
+  }
+  .scarcity-badge .dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background:#fff;
+    flex-shrink:0;
+    animation:pulse 1.6s ease-in-out infinite;
   }
   .badges span::before{
     content:'✓';
@@ -514,6 +548,25 @@
     width:100%;
     justify-content:center;
   }
+  .offer-scarcity{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--rose-600);
+    color:#fff;
+    font-size:0.78rem;
+    font-weight:700;
+    padding:8px 16px;
+    border-radius:100px;
+    margin-bottom:18px;
+  }
+  .offer-scarcity .dot{
+    width:6px; height:6px;
+    border-radius:50%;
+    background:#fff;
+    flex-shrink:0;
+    animation:pulse 1.6s ease-in-out infinite;
+  }
 
   /* ---------- FINAL CTA ---------- */
   .final{
@@ -582,6 +635,8 @@
     .problem h2 br{display:none;}
     .badges{gap:12px 18px;}
     section{padding:56px 0;}
+    .nav .wrap{flex-wrap:wrap; gap:10px; padding-top:12px; padding-bottom:12px;}
+    .nav-scarcity{font-size:0.75rem;}
   }
 </style>
 </head>
@@ -589,7 +644,7 @@
 
 <nav class="nav">
   <div class="wrap">
-    <div class="nav-brand">Decisão Clínica<span>.</span></div>
+    <span class="nav-scarcity"><span class="dot"></span>Apenas <b>10 vagas</b> por <b>R$ 19,90</b></span>
     <a href="#inscricao" class="nav-cta">Garantir vaga</a>
   </div>
 </nav>
@@ -598,6 +653,7 @@
   <div class="wrap">
     <div>
       <span class="eyebrow">Workshop ao vivo · Enfermagem em Feridas</span>
+      <div class="scarcity-badge"><span class="dot"></span>Primeiro lote: apenas 10 vagas por R$ 19,90</div>
       <h1>Domine as coberturas para tratamento de feridas e pare de ter dúvidas sobre qual utilizar em cada paciente.</h1>
       <p class="lede">Aprenda, com duas especialistas, quando utilizar as principais coberturas industriais e os principais fitoterápicos no tratamento de feridas. Em duas aulas ao vivo você aprenderá, na prática, quando indicar cada opção para conduzir seus pacientes com muito mais segurança.</p>
       <div class="badges">
@@ -786,11 +842,12 @@
         </ul>
       </div>
       <div class="offer-price-box">
-        <span class="offer-was">Vagas com condição especial de lançamento</span>
+        <span class="offer-scarcity"><span class="dot"></span>Primeiro lote: apenas 10 vagas</span>
+        <span class="offer-was">Condição especial de lançamento</span>
         <div class="offer-price">
           <span class="currency">R$</span>
-          <span class="amount">67</span>
-          <span class="cents">,00</span>
+          <span class="amount">19</span>
+          <span class="cents">,90</span>
         </div>
         <span class="offer-note">pagamento único · acesso imediato</span>
         <a href="#" class="btn-primary offer-btn">Quero garantir minha vaga
