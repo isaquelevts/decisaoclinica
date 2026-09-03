@@ -12,13 +12,11 @@ Site estático do Workshop Decisão Clínica em Feridas — Enf.ª Dra. Patríci
 | `/criativos` | `criativos/index.html` | Os 9 roteiros de vídeo, para as especialistas gravarem |
 | `/obrigado` | `obrigado/index.html` | Página pós-pagamento: confirmação + link do grupo do WhatsApp |
 
-## Conversões (Meta Pixel + Conversions API)
+## Conversões (Meta Pixel)
 
-- **Pixel (client-side):** carregado em `/obrigado`, ID `2099416627508807`, dispara `PageView` quando o comprador chega na página após o pagamento.
-- **Conversions API (server-side):** `api/cakto-webhook.js`, uma serverless function da Vercel. Configure na Cakto um webhook de "pagamento aprovado" apontando para `https://SEU-DOMINIO/api/cakto-webhook` — a function envia o evento `Purchase` para o Meta.
-- **Variável de ambiente obrigatória** (Vercel → Project Settings → Environment Variables): `META_ACCESS_TOKEN`. Nunca commitar o token no repositório.
-- O formato exato do payload da Cakto pode variar — confira os logs da function após o primeiro teste de compra e ajuste os nomes de campo em `api/cakto-webhook.js` se necessário.
-- Configure também, na Cakto, a URL de redirecionamento pós-pagamento para `/obrigado`.
+- Pixel carregado em `/obrigado`, ID `2099416627508807`. Dispara `PageView` e `Purchase` (valor fixo R$ 19,90, BRL) quando o comprador chega na página após o pagamento.
+- Configure na Cakto a URL de redirecionamento pós-pagamento para `/obrigado` — é isso que faz o pixel disparar só para quem realmente comprou.
+- Se o preço mudar, atualize o valor do evento `Purchase` em `obrigado/index.html`.
 
 ## Deploy
 
@@ -41,10 +39,8 @@ npx serve .
 │   └── index.html      # planejamento da oferta
 ├── criativos/
 │   └── index.html      # roteiros de vídeo
-├── obrigado/
-│   └── index.html      # página pós-pagamento
-└── api/
-    └── cakto-webhook.js  # webhook Cakto → Conversions API (Meta)
+└── obrigado/
+    └── index.html      # página pós-pagamento
 ```
 
-Cada página é um arquivo HTML único, com CSS embutido e fontes do Google Fonts (Fraunces, Public Sans, Space Mono). Não há dependências nem etapa de build — a única exceção é `api/cakto-webhook.js`, uma serverless function Node.js processada pela Vercel.
+Cada página é um arquivo HTML único, com CSS embutido e fontes do Google Fonts (Fraunces, Public Sans, Space Mono). Não há dependências nem etapa de build.
