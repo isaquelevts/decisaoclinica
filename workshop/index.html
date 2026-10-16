@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Workshop Decisão Clínica em Feridas</title>
+<title>Workshop Decisão Clínica em Feridas | Inscrições</title>
+<meta name="description" content="Duas aulas ao vivo sobre critérios de escolha de coberturas industriais e fitoterápicos no tratamento de feridas, com material de apoio e certificado.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -83,7 +84,7 @@
     align-items:center;
   }
   .hero h1{
-    font-size:clamp(1.8rem, 2.9vw, 2.15rem);
+    font-size:clamp(2.2rem, 3.6vw, 3.35rem);
     line-height:1.16;
     margin:18px 0 22px;
     text-wrap:balance;
@@ -637,13 +638,62 @@
   @media (max-width: 480px){
     .wrap{padding:0 20px;}
     .hero{padding:56px 0 40px;}
-    .hero h1{font-size:1.5rem;}
-    h2{font-size:1.0rem !important;}
+    .hero h1{font-size:clamp(2rem, 8vw, 2.7rem);}
+    .section-head h2{font-size:1.85rem;}
+    .final h2{font-size:2rem;}
     .problem h2 br{display:none;}
     .badges{gap:12px 18px;}
     section{padding:56px 0;}
     .scarcity-badge{font-size:0.66rem; padding:5px 10px;}
   }
+
+  .hero{padding:72px 0 72px; background:radial-gradient(circle at 78% 16%, #ffe4ec 0, transparent 35%);}
+  .hero .wrap{gap:clamp(32px, 5vw, 72px);}
+  .hero .eyebrow{margin-bottom:4px;}
+  .hero-price{display:flex; flex-direction:column; align-items:flex-start; margin:0 0 22px; padding:16px 20px; border-left:3px solid var(--rose-600); background:rgba(255,255,255,.58); border-radius:0 14px 14px 0;}
+  .hero-price strong{font-family:'Fraunces',serif; font-size:clamp(1.7rem,3vw,2.15rem); line-height:1.1; color:var(--ink-900);}
+  .hero-price span{font-size:.85rem; color:var(--ink-700); margin-top:5px;}
+  .price-total{font-size:.76rem; color:var(--pink-200); margin:12px 0 20px;}
+  .hero .price-total{color:var(--ink-700); margin:7px 0 0;}
+  .hero .badges{margin-bottom:24px;}
+  .hero .photo-card{transform:rotate(1deg);}
+  .problem .intro{font-size:1.06rem; color:var(--pink-100); max-width:72ch; margin:18px auto 28px;}
+  .problem .intro p+p{margin-top:14px;}
+  .problem .lede-big{margin:24px auto;}
+  .problem .q-grid{grid-template-columns:repeat(2,1fr); margin-top:30px;}
+  .problem .q-card{text-align:left;}
+  .problem .punch{max-width:58ch; margin-top:30px;}
+  .section-intro{color:var(--ink-700); max-width:70ch; margin-top:12px;}
+  .prog-card>p:not(.instructor):not(.label){color:var(--ink-700); margin-bottom:17px; max-width:74ch;}
+  .program-closing{text-align:center; font-family:'Fraunces',serif; font-size:1.25rem; max-width:56ch; margin:28px auto 0;}
+  .spec-intro{color:var(--ink-700); max-width:70ch; margin:-24px 0 32px;}
+  .spec-closing{text-align:center; max-width:65ch; margin:32px auto 0; font-family:'Fraunces',serif; font-size:1.2rem;}
+  .whom-note{color:var(--ink-700); font-size:.8rem; margin-top:18px;}
+  .transformation .section-intro{margin-top:14px;}
+  .transformation .takeaway{font-family:'Fraunces',serif; font-size:1.32rem; line-height:1.35; margin-top:20px;}
+  .offer-copy>p{color:var(--ink-700); margin:0 0 18px; max-width:56ch;}
+  .offer-price-box .price-label{font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:.1em; font-size:.72rem; color:var(--pink-300); margin-bottom:12px;}
+  .offer-price{display:block; font-family:'Fraunces',serif; font-size:clamp(2rem,3.5vw,2.9rem); font-weight:600; line-height:1.1; margin-bottom:10px;}
+  .offer-price .installments{color:var(--pink-300);}
+  .offer-note{font-size:1rem; margin-bottom:0; color:#fff;}
+  .final-price{font-family:'Fraunces',serif; color:#fff; font-size:clamp(1.75rem,4vw,2.5rem); line-height:1.15; margin:0 auto 8px;}
+  .final-price-note{color:var(--pink-200); margin-bottom:24px; font-size:.95rem;}
+  .btn-primary:focus-visible{outline:3px solid var(--ink-900); outline-offset:4px;}
+  .final .btn-primary:focus-visible,.offer-price-box .btn-primary:focus-visible{outline-color:#fff;}
+  @media (max-width:860px){.problem .q-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:600px){
+    .hero{padding:48px 0 56px;}
+    .hero .wrap{gap:34px;}
+    .hero .photo-card{transform:none;}
+    .hero .btn-primary,.mid-cta .btn-primary,.final .btn-primary{width:100%; justify-content:center; text-align:center;}
+    .problem .q-grid{grid-template-columns:1fr;}
+    .problem .q-card{padding:18px 20px;}
+    .problem .intro{text-align:left;}
+    .offer-card{padding:28px 20px; gap:24px;}
+    .offer-price-box{padding:28px 20px;}
+    .final{padding:64px 22px;}
+  }
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1; transform:none;}}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -664,23 +714,16 @@
 <!-- End Meta Pixel Code -->
 </head>
 <body>
-
 <header class="hero">
   <div class="wrap">
     <div>
-      <div class="scarcity-badge"><span class="dot"></span>Primeiro lote: apenas 10 vagas por R$ 19,90</div>
-      <h1>Domine as coberturas para tratamento de feridas e pare de ter dúvidas sobre qual utilizar em cada paciente.</h1>
-      <p class="lede">Aprenda, com duas especialistas, quando utilizar as principais coberturas industriais e os principais fitoterápicos no tratamento de feridas. Em duas aulas ao vivo você aprenderá, na prática, quando indicar cada opção para conduzir seus pacientes com muito mais segurança.</p>
-      <div class="badges">
-        <span>Workshop ao vivo</span>
-        <span>Material de apoio</span>
-        <span>Certificado</span>
-      </div>
-      <a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero garantir minha vaga
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+      <span class="eyebrow">Workshop ao vivo | Decisão Clínica em Feridas</span>
+      <h1>Você conhece as coberturas. <em>Mas sabe qual escolher</em> quando está diante de uma ferida?</h1>
+      <p class="lede">Aprenda, em duas aulas ao vivo com especialistas, quando utilizar as principais coberturas industriais e os fitoterápicos no tratamento de feridas, compreendendo os critérios que orientam cada escolha.</p>
+      <div class="badges"><span>Duas aulas ao vivo</span><span>Material de apoio</span><span>Certificado de participação</span></div>
+      <div class="hero-price"><strong>12x de R$ 10,02</strong><span>Ou R$ 97,00 à vista</span><small class="price-total">Total parcelado: R$ 120,24</small></div>
+      <a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero garantir minha vaga →</a>
     </div>
-
     <div class="photo-card">
       <img class="photo-img" src="/workshop/frame-215.png" alt="Enfermeira Dra. Patrícia Lemos e Enfermeira Dra. Luz Marina Alfonso Dutra">
       <p class="cap photo-cap">Enfermeira Dra. Patrícia Lemos &amp; Enfermeira Dra. Luz Marina Alfonso Dutra</p>
@@ -688,215 +731,77 @@
   </div>
 </header>
 
+<main>
 <section class="problem reveal">
   <div class="wrap">
-    <span class="eyebrow">O problema</span>
-    <h2>O mercado ensina dezenas de coberturas.<br>O problema é que quase ninguém ensina <em>quando utilizar cada uma delas</em>.</h2>
-    <p class="lede-big">Você aprende sobre:</p>
-
-    <ul class="cover-list">
-      <li>Espumas</li>
-      <li>Alginatos</li>
-      <li>Hidrogéis</li>
-      <li>Hidrofibras</li>
-      <li>Carvão com prata</li>
-      <li>Fitoterápicos</li>
-      <li>Manipulados</li>
-    </ul>
-
-    <p class="lede-big">Mas quando está diante do paciente surge a dúvida que realmente importa:</p>
-    <p class="punch"><strong>Qual cobertura eu utilizo neste caso?</strong></p>
-    <p class="lede-big">É exatamente essa insegurança que este workshop foi criado para resolver.</p>
-
-    <div class="mid-cta">
-      <a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero resolver essa dúvida
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
+    <span class="eyebrow">O desafio na prática</span>
+    <h2>Saber o nome de uma cobertura não significa saber <em>quando utilizá-la.</em></h2>
+    <div class="intro"><p>Você conhece o hidrogel, o alginato, a espuma, a hidrofibra e diversas outras opções. Sabe que cada uma possui características e indicações diferentes. Mas conhecer essas opções é apenas parte do trabalho.</p><p><strong>O verdadeiro desafio começa quando você precisa decidir qual delas faz sentido para a ferida que está tratando.</strong> É preciso considerar a lesão, as necessidades do paciente, as indicações de cada produto e as condições para dar continuidade ao tratamento.</p></div>
+    <div class="q-grid">
+      <div class="q-card"><span class="q-mark">01</span><p>Quando escolher um hidrogel em vez de outra cobertura?</p></div>
+      <div class="q-card"><span class="q-mark">02</span><p>Em quais situações uma espuma ou um alginato pode ser indicado?</p></div>
+      <div class="q-card"><span class="q-mark">03</span><p>Quais critérios considerar antes de utilizar uma cobertura com prata?</p></div>
+      <div class="q-card"><span class="q-mark">04</span><p>Quando considerar fitoterápicos ou alternativas compatíveis com o orçamento do paciente?</p></div>
     </div>
-  </div>
-</section>
-
-<section class="learn reveal">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">O que você vai aprender</span>
-      <h2>Em apenas duas aulas você aprenderá</h2>
-    </div>
-    <div class="learn-grid">
-      <div class="learn-item"><span class="num">01</span><p>Quando utilizar as principais coberturas industriais</p></div>
-      <div class="learn-item"><span class="num">02</span><p>Quando indicar os principais fitoterápicos</p></div>
-      <div class="learn-item"><span class="num">03</span><p>Como escolher a melhor opção para diferentes tipos de feridas</p></div>
-      <div class="learn-item"><span class="num">04</span><p>Como adaptar a escolha à realidade financeira do paciente</p></div>
-      <div class="learn-item"><span class="num">05</span><p>Como conduzir seus casos com muito mais segurança</p></div>
-    </div>
+    <p class="punch"><strong>Não basta conhecer os produtos.</strong> É preciso compreender os critérios que orientam sua utilização. É para desenvolver esse raciocínio que criamos este workshop.</p>
+    <div class="mid-cta"><a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero aprender a escolher com mais segurança →</a></div>
   </div>
 </section>
 
 <section class="program reveal">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Programação</span>
-      <h2>Duas aulas ao vivo, os dois principais grupos de tratamentos</h2>
-    </div>
-
-    <div class="prog-card">
-      <span class="prog-tag">Aula 1</span>
-      <h3>Coberturas Industriais</h3>
-      <p class="instructor">Com a Enf.ª Dra. Patrícia Lemos</p>
-      <p class="label">Você aprenderá:</p>
-      <ul class="prog-list">
-        <li>As principais coberturas utilizadas atualmente</li>
-        <li>Quando utilizar cada uma delas</li>
-        <li>As indicações de cada cobertura</li>
-        <li>Como adaptar o tratamento ao orçamento do paciente</li>
-        <li>Casos clínicos</li>
-      </ul>
-    </div>
-
-    <div class="prog-card">
-      <span class="prog-tag">Aula 2</span>
-      <h3>Fitoterápicos no tratamento de feridas</h3>
-      <p class="instructor">Com a Enf.ª Dra. Luz Marina</p>
-      <p class="label">Você aprenderá:</p>
-      <ul class="prog-list">
-        <li>Os principais fitoterápicos</li>
-        <li>Quando utilizar cada um</li>
-        <li>Evidências científicas</li>
-        <li>Aplicações práticas</li>
-        <li>Casos clínicos</li>
-      </ul>
-    </div>
-
-    <div class="mid-cta">
-      <a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero garantir minha vaga
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+    <div class="section-head"><span class="eyebrow">Conteúdo do workshop</span><h2>Duas aulas para compreender as opções de tratamento e os critérios de escolha.</h2><p class="section-intro">Cada encontro é conduzido por uma especialista com experiência clínica e acadêmica.</p></div>
+    <article class="prog-card"><span class="prog-tag">Aula 1</span><h3>Coberturas industriais</h3><p class="instructor">Com a Dra. Patrícia Lemos</p><p>Entenda as principais coberturas utilizadas no tratamento de feridas, suas indicações e os fatores que precisam ser considerados antes da escolha.</p><ul class="prog-list"><li>Principais coberturas industriais disponíveis</li><li>Indicações e particularidades de cada uma</li><li>Critérios para diferenciar as opções</li><li>Orçamento do paciente na escolha</li><li>Casos clínicos ligados à prática</li></ul></article>
+    <article class="prog-card"><span class="prog-tag">Aula 2</span><h3>Fitoterápicos no tratamento de feridas</h3><p class="instructor">Com a Dra. Luz Marina Alfonso Dutra</p><p>Conheça as possibilidades de utilização dos fitoterápicos e a importância das evidências científicas na avaliação dessas alternativas.</p><ul class="prog-list"><li>Principais fitoterápicos utilizados na área</li><li>Indicações e aplicações práticas</li><li>Evidências científicas disponíveis</li><li>Casos clínicos para contextualizar decisões</li></ul></article>
+    <p class="program-closing">O objetivo não é decorar uma lista de produtos. É compreender melhor quando e por que considerar cada opção.</p>
+    <div class="mid-cta"><a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero participar do workshop →</a></div>
   </div>
 </section>
 
 <section class="specialists reveal">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Conheça as especialistas</span>
-      <h2>Duas décadas de prática à beira do leito</h2>
-    </div>
+    <div class="section-head"><span class="eyebrow">Quem conduz as aulas</span><h2>Aprenda com quem conhece o tratamento de feridas na prática e na pesquisa.</h2></div>
+    <p class="spec-intro">A escolha de uma cobertura não deve ser orientada apenas pelo que está escrito na embalagem. O workshop reúne duas profissionais com experiência clínica, formação acadêmica e atuação no ensino.</p>
     <div class="spec-grid">
-      <div class="spec-card">
-        <img class="spec-img" src="/workshop/dra-patricia.png" alt="Enfermeira Dra. Patrícia Lemos">
-        <h3>Dra. Patrícia Lemos</h3>
-        <p class="cred">Estomaterapia · Enfermagem Dermatológica · 18 anos</p>
-        <p>Mestre em Enfermagem, já atendeu mais de 10 mil pacientes e coordenou grupos especializados em hospitais. Atua em consultório, hospitais e atendimento domiciliar, coordena uma pós-graduação em Enfermagem Dermatológica e ministra cursos de Laserterapia.</p>
-      </div>
-      <div class="spec-card">
-        <img class="spec-img" src="/workshop/dra-luz-marina.png" alt="Enfermeira Dra. Luz Marina Alfonso Dutra">
-        <h3>Dra. Luz Marina Alfonso Dutra</h3>
-        <p class="cred">Enfermagem Dermatológica · 20 anos</p>
-        <p>Mestre e doutora pela Universidade de Brasília. Atua no ambulatório de Diabetes, Obesidade e Hipertensão do SUS em Brasília, é docente do Mestrado Profissional da ESP-DF, tutora de Residência Multiprofissional e tem formação em Antroposofia pela Fiocruz.</p>
-      </div>
+      <article class="spec-card"><img class="spec-img" src="/workshop/dra-patricia.png" alt="Enfermeira Dra. Patrícia Lemos"><h3>Dra. Patrícia Lemos</h3><p class="cred">Estomaterapia · Enfermagem Dermatológica · 18 anos de experiência</p><p>Mestre em Enfermagem, com mais de 10 mil pacientes atendidos e atuação em hospitais, consultórios e atendimento domiciliar. Coordena uma pós-graduação em Enfermagem Dermatológica e possui experiência na coordenação de grupos especializados em hospitais.</p></article>
+      <article class="spec-card"><img class="spec-img" src="/workshop/dra-luz-marina.png" alt="Enfermeira Dra. Luz Marina Alfonso Dutra"><h3>Dra. Luz Marina Alfonso Dutra</h3><p class="cred">Enfermagem Dermatológica · 20 anos de experiência</p><p>Mestre e doutora pela Universidade de Brasília. Atua no ambulatório de Diabetes, Obesidade e Hipertensão do SUS em Brasília, é docente do Mestrado Profissional da ESP-DF, tutora de Residência Multiprofissional e possui formação em Antroposofia pela Fiocruz.</p></article>
     </div>
-  </div>
-</section>
-
-<section class="receive reveal">
-  <div class="wrap">
-    <div>
-      <span class="eyebrow">O que você recebe</span>
-      <h2>Tudo que fica com você depois do último minuto ao vivo</h2>
-    </div>
-    <ul class="receive-list">
-      <li>Dois encontros ao vivo</li>
-      <li>Material de apoio</li>
-      <li>Certificado de participação</li>
-    </ul>
+    <p class="spec-closing">Duas especialistas. Duas áreas complementares. Um objetivo: ajudar você a compreender melhor as decisões envolvidas no tratamento de feridas.</p>
   </div>
 </section>
 
 <section class="whom reveal">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Para quem é este workshop</span>
-      <h2>Feito para quem decide o tratamento, não só quem o aplica</h2>
-    </div>
-    <ul class="whom-list">
-      <li><span class="tag">→</span> Trabalham com tratamento de feridas</li>
-      <li><span class="tag">→</span> Desejam atuar na área</li>
-      <li><span class="tag">→</span> Atendem pacientes em hospitais, clínicas ou domicílio</li>
-      <li><span class="tag">→</span> Pretendem abrir um consultório especializado</li>
-      <li><span class="tag">→</span> Buscam mais segurança para tomar decisões clínicas</li>
-      <li><span class="tag">→</span> Querem atualizar a prática com base em evidências científicas</li>
-    </ul>
-
-    <div class="mid-cta">
-      <a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero garantir minha vaga
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
+    <div class="section-head"><span class="eyebrow">Para quem é</span><h2>Para quem precisa compreender as decisões por trás do tratamento de feridas.</h2><p class="section-intro">Indicado para profissionais e estudantes da área da saúde que:</p></div>
+    <ul class="whom-list"><li><span class="tag">01</span>Já trabalham com tratamento de feridas</li><li><span class="tag">02</span>Desejam começar a atuar na área</li><li><span class="tag">03</span>Atendem pacientes em hospitais, clínicas ou domicílios</li><li><span class="tag">04</span>Pretendem abrir um consultório especializado</li><li><span class="tag">05</span>Querem aprofundar conhecimentos sobre coberturas e fitoterápicos</li><li><span class="tag">06</span>Buscam atualizar a prática com base em evidências científicas</li></ul>
+    <p class="whom-note">A aplicação do conteúdo deve respeitar as atribuições profissionais e a legislação de cada categoria.</p>
   </div>
 </section>
 
-<section class="receive reveal">
+<section class="receive transformation reveal">
   <div class="wrap">
-    <div>
-      <span class="eyebrow">A transformação</span>
-      <h2>Ao final do workshop você será capaz de</h2>
-    </div>
-    <ul class="receive-list">
-      <li>Saber quando utilizar as principais coberturas industriais</li>
-      <li>Saber quando indicar os principais fitoterápicos</li>
-      <li>Parar de "chutar" qual tratamento utilizar</li>
-      <li>Escolher a melhor opção para diferentes tipos de feridas</li>
-      <li>Atender com muito mais segurança</li>
-    </ul>
+    <div><span class="eyebrow">O que você desenvolve</span><h2>Saia da dúvida sobre os produtos e compreenda melhor os critérios de escolha.</h2><p class="section-intro">Ao participar do workshop, você terá a oportunidade de relacionar conhecimento e prática em casos clínicos.</p><p class="takeaway">Escolher uma cobertura pede avaliação, conhecimento e critérios clínicos.</p></div>
+    <ul class="receive-list"><li>Compreender indicações das principais coberturas industriais</li><li>Conhecer possibilidades de uso dos fitoterápicos</li><li>Identificar fatores relevantes na escolha</li><li>Relacionar teoria e casos clínicos</li><li>Considerar as condições financeiras do paciente</li><li>Desenvolver raciocínio clínico mais fundamentado</li></ul>
   </div>
 </section>
 
-<section class="offer reveal">
-  <div class="wrap">
-    <div class="offer-card">
-      <div class="offer-copy">
-        <span class="eyebrow">Investimento</span>
-        <h2>Tudo o que você precisa para parar de ter dúvidas na hora de escolher uma cobertura</h2>
-        <ul class="offer-list">
-          <li>2 aulas ao vivo</li>
-          <li>Material de apoio</li>
-          <li>Certificado</li>
-        </ul>
-      </div>
-      <div class="offer-price-box">
-        <span class="offer-scarcity"><span class="dot"></span>Primeiro lote: apenas 10 vagas</span>
-        <span class="offer-was">Condição especial de lançamento</span>
-        <div class="offer-price">
-          <span class="currency">R$</span>
-          <span class="amount">19</span>
-          <span class="cents">,90</span>
-        </div>
-        <span class="offer-note">pagamento único · acesso imediato</span>
-        <a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary offer-btn">Quero garantir minha vaga
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
+<section class="offer reveal" id="investimento">
+  <div class="wrap"><div class="offer-card">
+    <div class="offer-copy"><span class="eyebrow">Investimento</span><h2>Quanto vale ter mais segurança na hora de escolher uma cobertura?</h2><p>Diante de uma ferida, você precisa considerar a lesão, as indicações dos produtos e as condições do paciente. Reunimos duas especialistas para ajudar você a desenvolver esse raciocínio.</p><ul class="offer-list"><li>Duas aulas ao vivo com especialistas</li><li>Discussão de casos clínicos</li><li>Material de apoio</li><li>Certificado de participação</li></ul></div>
+    <div class="offer-price-box"><span class="price-label">Sua inscrição</span><div class="offer-price"><span class="installments">12x</span> de R$ 10,02</div><p class="offer-note">Ou R$ 97,00 à vista</p><p class="price-total">Total parcelado: R$ 120,24</p><a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary offer-btn">Quero garantir minha vaga →</a></div>
+  </div></div>
 </section>
 
 <section id="inscricao" class="final reveal">
-  <span class="eyebrow">Garanta sua vaga</span>
-  <h2>Nunca mais fique em dúvida sobre <em>qual cobertura</em> utilizar</h2>
-  <p>Participe do Workshop de Tratamento de Feridas e aprenda, com duas especialistas, quando utilizar as principais coberturas industriais e os principais fitoterápicos para tratar seus pacientes com mais segurança.</p>
-  <a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero garantir minha vaga agora
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </a>
-  <div class="final-includes">
-    <span>Workshop ao vivo</span>
-    <span>Material de apoio</span>
-    <span>Certificado</span>
-  </div>
+  <span class="eyebrow">Sua próxima decisão</span>
+  <h2>A próxima vez que estiver diante de uma ferida, tenha mais conhecimento para <em>orientar sua escolha.</em></h2>
+  <p>Compreenda as indicações das coberturas, reconheça suas diferenças e desenvolva um raciocínio clínico mais fundamentado em duas aulas ao vivo com especialistas.</p>
+  <div class="final-price">12x de R$ 10,02</div><div class="final-price-note">Ou R$ 97,00 à vista · Total parcelado: R$ 120,24</div>
+  <a href="https://pay.cakto.com.br/39e8oh9_1062853" class="btn-primary">Quero garantir minha vaga agora →</a>
+  <div class="final-includes"><span>Workshop ao vivo</span><span>Material de apoio</span><span>Certificado</span></div>
 </section>
-
-<footer>
-  Workshop Decisão Clínica em Feridas — Dra. Patrícia Lemos &amp; Dra. Luz Marina Alfonso Dutra
-</footer>
+</main>
+<footer>Workshop Decisão Clínica em Feridas — Dra. Patrícia Lemos &amp; Dra. Luz Marina Alfonso Dutra</footer>
 
 <script>
   const io = new IntersectionObserver((entries)=>{

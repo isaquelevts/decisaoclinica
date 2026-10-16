@@ -14,9 +14,9 @@ Site estático do Workshop Decisão Clínica em Feridas — Enf.ª Dra. Patríci
 
 ## Conversões (Meta Pixel)
 
-- Pixel carregado em `/obrigado`, ID `2099416627508807`. Dispara `PageView` e `Purchase` (valor fixo R$ 19,90, BRL) quando o comprador chega na página após o pagamento.
+- Pixel carregado em `/obrigado`, ID `2099416627508807`. Dispara `PageView` e `Purchase` (valor fixo R$ 97,00, BRL) quando o comprador chega na página após o pagamento.
 - Configure na Cakto a URL de redirecionamento pós-pagamento para `/obrigado` — é isso que faz o pixel disparar só para quem realmente comprou.
-- Se o preço mudar, atualize o valor do evento `Purchase` em `obrigado/index.html`.
+- Se o preço à vista mudar, atualize o valor do evento `Purchase` em `obrigado/index.html`. Compras parceladas podem ter total diferente; para precisão por transação, envie o valor real da Cakto ao evento.
 
 ## Deploy
 
