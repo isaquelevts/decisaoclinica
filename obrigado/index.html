@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
-<title>Inscrição confirmada — Workshop de Tratamento de Feridas</title>
+<meta name="description" content="Obrigada pela sua inscrição! Entre no grupo oficial do WhatsApp para receber as orientações e os avisos do curso da Inside Feridas.">
+<title>Obrigada pela sua inscrição — Curso Inside Feridas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -84,6 +85,8 @@
     color:var(--rose-700);
     margin-bottom:10px;
   }
+  .card h2{font-family:'Fraunces', serif; font-size:1.6rem; line-height:1.2; margin-bottom:12px;}
+  .card .intro{color:var(--ink-700); margin-bottom:18px;}
   .card ul{list-style:none;}
   .card li{
     display:flex; align-items:flex-start; gap:10px;
@@ -96,7 +99,11 @@
     display:inline-flex;
     align-items:center;
     gap:10px;
-    background:#25D366;
+    justify-content:center;
+    width:100%;
+    margin-top:22px;
+    text-align:center;
+    background:#147D43;
     color:#fff;
     padding:16px 30px;
     border-radius:100px;
@@ -106,9 +113,21 @@
     transition:transform .2s ease, box-shadow .2s ease;
   }
   .btn-whatsapp:hover{
+    background:#106636;
     transform:translateY(-2px);
     box-shadow:0 18px 34px -12px rgba(37,211,102,0.65);
   }
+  .btn-whatsapp[aria-disabled="true"]{opacity:0.65; cursor:default; box-shadow:none; transform:none;}
+  .btn-whatsapp svg{flex-shrink:0;}
+  .btn-whatsapp:focus-visible{outline:3px solid var(--ink-900); outline-offset:5px;}
+  .hint{font-size:0.8rem; color:var(--ink-700); text-align:center; margin-top:12px;}
+  .welcome{color:var(--rose-700); font-family:'Fraunces', serif; font-size:1.2rem;}
+  @media(max-width:480px){
+    body{padding:30px 18px;}
+    .card{padding:24px 20px;}
+    .btn-whatsapp{padding:16px 18px; font-size:0.95rem;}
+  }
+  @media(prefers-reduced-motion:reduce){.btn-whatsapp{transition:none;}}
   footer{
     margin-top:36px;
     font-size:0.78rem;
@@ -118,46 +137,33 @@
 </style>
 </head>
 <body>
-  <div class="shell">
-    <div class="check">✓</div>
-    <span class="eyebrow">Pagamento confirmado</span>
-    <h1>Sua vaga no <em>Workshop de Tratamento de Feridas</em> está garantida!</h1>
-    <p class="sub">Recebemos sua inscrição. Agora falta um passo: entrar no grupo oficial do workshop para receber o link da aula ao vivo e todos os avisos importantes.</p>
+  <main class="shell">
+    <div class="check" aria-hidden="true">✓</div>
+    <span class="eyebrow">Inscrição confirmada</span>
+    <h1>Obrigada pela <em>sua inscrição!</em></h1>
+    <p class="sub">Sua inscrição no <strong>curso da Inside Feridas</strong> está confirmada. Estamos muito felizes em ter você com a gente nessa jornada de aprendizado.</p>
 
     <div class="card">
-      <p class="label">Próximos passos</p>
+      <p class="label">Seu próximo passo</p>
+      <h2>Entre no grupo oficial do WhatsApp</h2>
+      <p class="intro">O próximo passo é entrar no grupo oficial do curso. Por lá, você vai receber os comunicados e as orientações para acompanhar sua jornada na Inside Feridas.</p>
       <ul>
-        <li>Entre no grupo do WhatsApp clicando no botão abaixo</li>
-        <li>Fique de olho nos avisos com data e horário das aulas ao vivo</li>
-        <li>Separe um tempo com calma nos dias das aulas — Coberturas Industriais e Fitoterápicos</li>
+        <li>Orientações para começar o curso</li>
+        <li>Comunicados da equipe Inside Feridas</li>
+        <li>Avisos importantes para acompanhar o curso</li>
       </ul>
-    </div>
-
-    <a href="https://chat.whatsapp.com/HuJWQt5ok2gEVsjpKFi20y" class="btn-whatsapp" target="_blank" rel="noopener">
+    <!-- Configurar o novo link do grupo do curso antes de publicar. -->
+    <a class="btn-whatsapp" role="link" aria-disabled="true" aria-describedby="group-status">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.15-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.77-1.44-1.71-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51h-.56c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43 0 1.43 1.04 2.82 1.19 3.01.15.2 2.05 3.13 4.97 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.11.55-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34z"/><path d="M12.02 2C6.5 2 2.02 6.48 2.02 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12.02 22C17.53 22 22 17.52 22 12S17.53 2 12.02 2zm0 18.18c-1.67 0-3.23-.46-4.56-1.26l-.33-.19-3.01.79.8-2.93-.21-.3a8.17 8.17 0 0 1-1.27-4.29c0-4.52 3.68-8.18 8.18-8.18 4.5 0 8.16 3.66 8.16 8.18 0 4.51-3.66 8.18-8.16 8.18z"/></svg>
       Entrar no grupo do WhatsApp
     </a>
+      <p class="hint" id="group-status">O link do grupo estará disponível aqui em breve.</p>
+    </div>
+    <p class="welcome">Boas-vindas à Inside Feridas!</p>
 
-    <footer>Workshop de Tratamento de Feridas — Dra. Patrícia Lemos &amp; Dra. Luz Marina Alfonso Dutra</footer>
-  </div>
+    <footer>Inside Feridas · Conhecimento que transforma o cuidado</footer>
+  </main>
 
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1395142059258495');
-    fbq('track', 'PageView');
-    fbq('track', 'Purchase', {value: 120.00, currency: 'BRL'});
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1395142059258495&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
+
 </body>
 </html>
